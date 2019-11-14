@@ -1,45 +1,57 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Button } from 'react-native-elements';
-import FetchLocation from './components/FetchLocation';
-import UsersMap from './components/UsersMap';
-
+"use strict";
+import React from "react";
+import { StyleSheet, Text, View, Image } from "react-native";
+import { Button } from "react-native-elements";
+import FetchLocation from "./components/FetchLocation";
+import UsersMap from "./components/UsersMap";
+import PresentationalComponent from "./components/PresentationalComponent";
+import Images from "./components/Images";
 
 export default class App extends React.Component {
-
   state = {
-    userLocation: null
-  }
+    myState: "what it do babyyyyyy"
+  };
 
-  getUserLocationHandler = () => {
-    navigator.geolocation.getCurrentPosition(position => {
-      this.setState({
-        userLocation: {
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-          latitudeDelta: 0.0622,
-          longitudeDelta: 0.0421
-        }
-      })
-    }, err => console.log(err));
-  }
-  
+  updateState = () => {
+    this.setState({ myState: "Updated" });
+  };
+
   render() {
-  return (
-    <View style={styles.container}>
-      <Text>Welcome to CRAM!</Text>
-        <FetchLocation onGetLocation = {this.getUserLocationHandler} /> 
-        <UsersMap userLocation={this.state.userLocation} />
-    </View>
-  );
+    return (
+      <View style={styles.container}>
+        <View style={styles.yellowbox} />
+        <View style={styles.greybox}>
+          <Button style={styles.button} title="Login" />
+          <Button title="Register" />
+        </View>
+      </View>
+    );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "column",
+    backgroundColor: "#FCBA03",
+    alignItems: "center",
+    justifyContent: "center"
   },
+
+  yellowbox: {
+    height: 300,
+    width: 500,
+    backgroundColor: "#FCBA03"
+  },
+
+  greybox: {
+    height: 500,
+    width: 500,
+    backgroundColor: "grey",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+
+  button: {
+    backgroundColor: "#FCBA03"
+  }
 });
