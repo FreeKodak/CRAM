@@ -8,7 +8,7 @@ import {
   TouchableOpacity
 } from "react-native";
 
-class Inputs extends Component {
+class LoginScreen extends Component {
   state = {
     email: "",
     password: ""
@@ -31,14 +31,14 @@ class Inputs extends Component {
       <View style={styles.container}>
         <TextInput
           style={styles.input}
-          placeholder="Email"
+          placeholder="   Email"
           placeholderTextColor="#9a73ef"
           onChangeText={this.handleEmail}
         />
 
         <TextInput
           style={styles.input}
-          placeholder="Password"
+          placeholder="   Password"
           placeholderTextColor="#9a73ef"
           onChangeText={this.handlePassword}
         />
@@ -54,12 +54,31 @@ class Inputs extends Component {
   }
 }
 
-export default Inputs;
+export default LoginScreen;
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    backgroundColor: "#FCBA03",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
+  },
 
-  input: {},
+  input: {
+    height: 40,
+    width: 150,
+    backgroundColor: "white",
+    borderColor: "black",
+    borderWidth: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 15
+  },
 
-  submitButton: {}
+  submitButton: {
+    backgroundColor: "grey",
+    padding: 10,
+    margin: 15,
+    height: 40
+  }
 });
