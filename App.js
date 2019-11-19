@@ -1,15 +1,14 @@
 "use strict";
-import React from "react";
+import React, { Component } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import { Button } from "react-native-elements";
-import FetchLocation from "./components/FetchLocation";
-import UsersMap from "./components/UsersMap";
 import PresentationalComponent from "./components/PresentationalComponent";
-import Images from "./components/Images";
+import Inputs from "./screens/LoginScreen";
+import { StackNavigator } from "react-navigation";
 
-export default class App extends React.Component {
+export default class Home extends React.Component {
   state = {
-    myState: "what it do babyyyyyy"
+    myState: "Home Page"
   };
 
   updateState = () => {
@@ -20,9 +19,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.yellowbox}>
-          <Image
-            source={require("C:/Users/GEO OIL ENERGY 2016/Documents/Projects/CramApp/branding/logo.png")}
-          />
+          <Image source={require("./branding/logo.png")} />
         </View>
         <View style={styles.greybox}>
           <TouchableOpacity style={styles.loginButton}>
