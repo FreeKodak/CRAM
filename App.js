@@ -1,45 +1,16 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Button } from 'react-native-elements';
-import FetchLocation from './components/FetchLocation';
-import UsersMap from './components/UsersMap';
+"use strict";
+import React, { Component } from "react";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { createStackNavigator } from "react-navigation-stack";
+import { createAppContainer } from "react-navigation";
+import HomeScreen from "./HomeScreen";
+import LoginScreen from "./screens/LoginScreen";
 
-
-export default class App extends React.Component {
-
-  state = {
-    userLocation: null
-  }
-
-  getUserLocationHandler = () => {
-    navigator.geolocation.getCurrentPosition(position => {
-      this.setState({
-        userLocation: {
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-          latitudeDelta: 0.0622,
-          longitudeDelta: 0.0421
-        }
-      })
-    }, err => console.log(err));
-  }
-  
-  render() {
-  return (
-    <View style={styles.container}>
-      <Text>Welcome to CRAM!</Text>
-        <FetchLocation onGetLocation = {this.getUserLocationHandler} /> 
-        <UsersMap userLocation={this.state.userLocation} />
-    </View>
-  );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+const MainNavigatior = createStackNavigator({
+  Home: { screen: HomeScreen },
+  Login: { screen: LoginScreen }
 });
+
+const App = createAppContainer(MainNavigatior);
+
+export default App;
