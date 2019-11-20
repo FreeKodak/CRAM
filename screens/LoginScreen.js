@@ -1,12 +1,20 @@
+"use strict";
 import React, { Component } from "react";
+import * as firebase from "firebase";
 import {
-  Image,
   Text,
   View,
   TextInput,
   StyleSheet,
   TouchableOpacity
 } from "react-native";
+
+firebase.initializeApp({
+  apiKey: "AIzaSyCvXlvAEtNjCvtt8kquDYrSi4JOqGLZr2c",
+  authDomain: "cramapp-2997f.firebaseapp.com",
+  databaseURL: "https://cramapp-2997f.firebaseio.com",
+  storageBucket: "cramapp-2997f.appspot.com"
+});
 
 class LoginScreen extends Component {
   state = {
@@ -22,9 +30,14 @@ class LoginScreen extends Component {
     this.setState({ password: text });
   };
 
-  login = (email, pass) => {
-    alert("email: " + email + " password: " + pass);
-  };
+  async login(email, pass) {
+    try {
+      await firebase.auth().signInWithEmailAndPassword(email, pass);
+      alert("Logged in!");
+    } catch (error) {
+      alert(error.toString());
+    }
+  }
 
   render() {
     return (
