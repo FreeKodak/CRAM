@@ -1,8 +1,6 @@
 "use strict";
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-import { createStackNavigator } from "react-navigation-stack";
-import { createAppContainer } from "react-navigation";
 
 class HomeScreen extends React.Component {
   render() {
@@ -19,7 +17,10 @@ class HomeScreen extends React.Component {
           >
             <Text>Login</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.registerButton}>
+          <TouchableOpacity
+            style={styles.registerButton}
+            onPress={() => navigate("CreateAcc")}
+          >
             <Text>Register</Text>
           </TouchableOpacity>
         </View>
