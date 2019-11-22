@@ -9,13 +9,6 @@ import {
   TouchableOpacity
 } from "react-native";
 
-firebase.initializeApp({
-  apiKey: "AIzaSyCvXlvAEtNjCvtt8kquDYrSi4JOqGLZr2c",
-  authDomain: "cramapp-2997f.firebaseapp.com",
-  databaseURL: "https://cramapp-2997f.firebaseio.com",
-  storageBucket: "cramapp-2997f.appspot.com"
-});
-
 class LoginScreen extends Component {
   state = {
     email: "",
