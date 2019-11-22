@@ -1,12 +1,8 @@
 import React, { Component } from "react";
-import {
-  Image,
-  Text,
-  View,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity
-} from "react-native";
+import { Image, Text, View, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import { NavigationEvents } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import { createAppContainer } from "react-navigation";
 
 class LoginScreen extends Component {
   state = {
@@ -22,8 +18,13 @@ class LoginScreen extends Component {
     this.setState({ password: text });
   };
 
+
+
   login = (email, pass) => {
     alert("email: " + email + " password: " + pass);
+    const { navigate } = this.props.navigation;
+
+    navigate("Map");
   };
 
   render() {
