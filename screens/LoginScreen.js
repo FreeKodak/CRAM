@@ -1,6 +1,7 @@
+"use strict";
 import React, { Component } from "react";
+import * as firebase from "firebase";
 import {
-  Image,
   Text,
   View,
   TextInput,
@@ -22,9 +23,14 @@ class LoginScreen extends Component {
     this.setState({ password: text });
   };
 
-  login = (email, pass) => {
-    alert("email: " + email + " password: " + pass);
-  };
+  async login(email, pass) {
+    try {
+      await firebase.auth().signInWithEmailAndPassword(email, pass);
+      alert("Logged in!");
+    } catch (error) {
+      alert(error.toString());
+    }
+  }
 
   render() {
     return (
