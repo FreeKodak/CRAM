@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity
+} from "react-native";
 import * as firebase from "firebase";
 
 class StudentCreateScreen extends Component {
@@ -84,6 +90,10 @@ class StudentCreateScreen extends Component {
 
         <Text>What are you currently majoring in?</Text>
         <TextInput style={styles.input} placeholder="Major" />
+
+        <TouchableOpacity>
+          <Text>Submit</Text>
+        </TouchableOpacity>
       </View>
     );
   }
