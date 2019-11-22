@@ -9,6 +9,8 @@ import {
   TouchableOpacity
 } from "react-native";
 
+///old stuff from daniel. use this to properly make registration for tutors and students
+
 class CreateAcc extends Component {
   state = {
     email: "",
