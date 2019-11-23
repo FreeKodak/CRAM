@@ -3,13 +3,20 @@ import { Image, Text, View, TextInput, StyleSheet, TouchableOpacity } from "reac
 import { Button } from 'react-native-elements';
 import FetchLocation from "../components/FetchLocation";
 import UsersMap from "../components/UsersMap";
-
+import { SearchBar } from 'react-native-elements';
+import BottomBar from "../components/BottomBar";
 
 export default class MapScreen extends React.Component {
 
     state = {
-        userLocation: null
+        userLocation: null,
+        show: true,
+        search: '',
     }
+
+    updateSearch = search => {
+        this.setState({ search });
+    };
 
     getUserLocationHandler = () => {
         navigator.geolocation.getCurrentPosition(position => {
@@ -17,9 +24,10 @@ export default class MapScreen extends React.Component {
                 userLocation: {
                     latitude: position.coords.latitude,
                     longitude: position.coords.longitude,
-                    latitudeDelta: 0.0522,
-                    longitudeDelta: 0.0421
-                }
+                    latitudeDelta: 0.0102,
+                    longitudeDelta: 0.0091
+                },
+                show: false,
             })
         }, err => console.log(err));
     }
@@ -28,9 +36,20 @@ export default class MapScreen extends React.Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.welcome}>Welcome to CRAM!</Text>
-                <FetchLocation onGetLocation={this.getUserLocationHandler} />
+                <View style={styles.hider}>
+                    {
+                        this.state.show ? <FetchLocation onGetLocation={this.getUserLocationHandler} /> : <View style={styles.sbar}>
+                            <SearchBar
+                                placeholder="Type Here..."
+                                platform="ios"
+                                onChangeText={this.updateSearch}
+                                value={this.state.search}
+                            />
+                        </View>
+                    }
+                </View>
                 <UsersMap userLocation={this.state.userLocation} />
-                <Button>Helo</Button>
+                <BottomBar />
             </View>
         );
     }
@@ -45,102 +64,13 @@ const styles = StyleSheet.create({
     },
     welcome: {
         fontSize: 28,
+    },
+    hider: {
+
+    },
+    sbar: {
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        margin: 4,
     }
 });
-
-
-
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         backgroundColor: '#fff'
-//     },
-//     map: {
-//         top: 0,
-//         left: 0,
-//         right: 0,
-//         bottom: 0,
-//         position: 'absolute'
-//     }
-// });
-
-
-// -- body of component -----------------------------------------------------------------
-    // state = {
-        //     email: "",
-        //     password: ""
-        // };
-
-        // handleEmail = text => {
-        //     this.setState({ email: text });
-        // };
-
-        // handlePassword = text => {
-        //     this.setState({ password: text });
-        // };
-
-
-
-        // login = (email, pass) => {
-        //     alert("email: " + email + " password: " + pass);
-        //     const { navigate } = this.props.navigation;
-
-        //     navigate("Map");
-        // };
-
-        // render() {
-        //     return (
-        //         <View style={styles.container}>
-        //             <TextInput
-        //                 style={styles.input}
-        //                 placeholder="   Email"
-        //                 placeholderTextColor="#9a73ef"
-        //                 onChangeText={this.handleEmail}
-        //             />
-
-        //             <TextInput
-        //                 style={styles.input}
-        //                 placeholder="   Password"
-        //                 placeholderTextColor="#9a73ef"
-        //                 onChangeText={this.handlePassword}
-        //             />
-
-        //             <TouchableOpacity
-        //                 style={styles.submitButton}
-        //                 onPress={() => this.login(this.state.email, this.state.password)}
-        //             >
-        //                 <Text>Submit</Text>
-        //             </TouchableOpacity>
-        //         </View>
-        //     );
-        // }
-// ------------------------------------------------------------------------------------------
-
-// body of styling ------------------------------------------------------------------------
-    // container: {
-    //     backgroundColor: "#FCBA03",
-    //     flex: 1,
-    //     alignItems: "center",
-    //     justifyContent: "center"
-    // },
-
-    // input: {
-    //     height: 40,
-    //     width: 150,
-    //     backgroundColor: "white",
-    //     borderColor: "black",
-    //     borderWidth: 1,
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    //     margin: 15
-    // },
-
-    // submitButton: {
-    //     textShadowColor: "#fff",
-    //     textShadowRadius: 25,
-    //     backgroundColor: "grey",
-    //     padding: 10,
-    //     margin: 15,
-    //     height: 40
-    // }
-// ---------------------------------------------------------------------------------------------------
