@@ -5,6 +5,7 @@ import FetchLocation from "../components/FetchLocation";
 import UsersMap from "../components/UsersMap";
 import { SearchBar } from 'react-native-elements';
 import BottomBar from "../components/BottomBar";
+import ListScreen from "../screens/ListScreen";
 
 export default class MapScreen extends React.Component {
 
@@ -32,6 +33,11 @@ export default class MapScreen extends React.Component {
         }, err => console.log(err));
     }
 
+    goList = () => {
+        const { navigate } = this.props.navigation;
+        navigate("List");
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -49,6 +55,12 @@ export default class MapScreen extends React.Component {
                     }
                 </View>
                 <UsersMap userLocation={this.state.userLocation} />
+                <TouchableOpacity
+                    style={styles.listButton}
+                    onPress={() => this.goList()}
+                >
+                    <Text>View All Tutors</Text>
+                </TouchableOpacity>
                 <BottomBar />
             </View>
         );
@@ -72,5 +84,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         margin: 4,
+    },
+    listButton: {
+        backgroundColor: "grey",
+        padding: 10,
+        margin: 15,
+        height: 25,
+        width: '60%',
+        justifyContent: 'center',
     }
 });

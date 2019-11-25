@@ -6,11 +6,13 @@ import { createAppContainer } from "react-navigation";
 import HomeScreen from "./HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import MapScreen from "./screens/MapScreen";
+import ListScreen from "./screens/ListScreen";
 
 const MainNavigatior = createStackNavigator({
   Home: { screen: HomeScreen },
   Login: { screen: LoginScreen },
   Map: { screen: MapScreen },
+  List: { screen: ListScreen },
 });
 
 const App = createAppContainer(MainNavigatior);

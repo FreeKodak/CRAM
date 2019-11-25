@@ -23,7 +23,7 @@ export default class BottomBar extends React.Component {
                 onPress={this.updateIndex}
                 selectedIndex={selectedIndex}
                 buttons={buttons}
-                containerStyle={{ height: 40 }}
+                containerStyle={{ height: 30 }}
             />
         )
     }
