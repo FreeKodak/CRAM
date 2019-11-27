@@ -1,14 +1,14 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 
 const usersMap = props => {
     return (
         <View style={styles.mapContainer}>
-            <MapView style = {styles.map}
-            region={props.userLocation}>
-                <MapView.Marker coordinate={props.userLocation}/> 
-            </MapView> 
+            <MapView style={styles.map}
+                region={props.userLocation}>
+                <MapView.Marker coordinate={props.userLocation} />
+            </MapView>
         </View>
     );
 };
@@ -16,7 +16,7 @@ const usersMap = props => {
 const styles = StyleSheet.create({
     mapContainer: {
         width: '100%',
-        height: 200
+        height: 400
 
     },
     map: {

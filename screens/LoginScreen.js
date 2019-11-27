@@ -1,13 +1,10 @@
 "use strict";
 import React, { Component } from "react";
+import { Image, Text, View, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import { NavigationEvents } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import { createAppContainer } from "react-navigation";
 import * as firebase from "firebase";
-import {
-  Text,
-  View,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity
-} from "react-native";
 
 class LoginScreen extends Component {
   state = {
@@ -27,6 +24,9 @@ class LoginScreen extends Component {
     try {
       await firebase.auth().signInWithEmailAndPassword(email, pass);
       alert("Logged in!");
+      const { navigate } = this.props.navigation;
+
+      navigate("Map");
     } catch (error) {
       alert(error.toString());
     }
