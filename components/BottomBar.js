@@ -1,17 +1,20 @@
 import React from "react";
 import { ButtonGroup } from 'react-native-elements';
 
-export default class BottomBar extends React.Component {
-    constructor() {
-        super()
+class BottomBar extends React.Component {
+    constructor(props) {
+        super(props);
         this.state = {
-            selectedIndex: 2
+            selectedIndex: 0,
         }
         this.updateIndex = this.updateIndex.bind(this)
     }
-
     updateIndex(selectedIndex) {
         this.setState({ selectedIndex })
+        const { navigate } = this.props.nav;
+        if (selectedIndex == 0) {
+            navigate('Calendar');
+        }
     }
 
     render() {
@@ -28,3 +31,5 @@ export default class BottomBar extends React.Component {
         )
     }
 }
+
+export default BottomBar;

@@ -10,6 +10,7 @@ import CreateTutorScreen from "./screens/CreateTutorScreen";
 import StudentCreateScreen from "./screens/StudentCreateScreen";
 import ListScreen from "./screens/ListScreen";
 import MapScreen from "./screens/MapScreen";
+import CalendarScreen from './screens/CalendarScreen';
 
 firebase.initializeApp({
   apiKey: "AIzaSyCvXlvAEtNjCvtt8kquDYrSi4JOqGLZr2c",
@@ -26,6 +27,7 @@ const MainNavigatior = createStackNavigator({
   StudentCreate: { screen: StudentCreateScreen },
   Map: { screen: MapScreen },
   List: { screen: ListScreen },
+  Calendar: { screen: CalendarScreen },
 });
 
 const App = createAppContainer(MainNavigatior);
