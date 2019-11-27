@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, Image } from "react-native";
 import * as firebase from "firebase";
-// import ImagePicker from "react-native-image-picker"
+//import ImagePicker from "react-native-image-picker"
+//import CameraRollPicker from "react-native-camera-roll-picker"
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 class CreateTutorScreen extends Component {
   state = {
@@ -31,20 +33,21 @@ class CreateTutorScreen extends Component {
   async register(email, pass, fname, lname) {
     try {
       await firebase.auth().createUserWithEmailAndPassword(email, pass);
-      this.writeUserData(fname, lname);
+      this.writeUserData(fname, lname, this.state.accountType);
       alert("Account Created!");
     } catch (error) {
       alert(error.toString());
     }
   }
 
-  writeUserData(fname, lname) {
+  writeUserData(fname, lname, usertype) {
     firebase
       .database()
       .ref("users/")
       .push({
         fname,
-        lname
+        lname,
+        usertype
       })
       .then(data => {
         console.log("data ", data);
@@ -56,35 +59,73 @@ class CreateTutorScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <TextInput
-          style={styles.input}
-          placeholder="First Name"
-          onChangeText={this.handleFName}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Last Name"
-          onChangeText={this.handleLName}
-        />
+      <KeyboardAwareScrollView
+        style={{ flex: 1 }}
+      >
+        <View style={styles.container}>
+          <Text style={styles.Reg}>
+            Registration Form
+          </Text>
+          <TextInput
+            style={styles.input}
+            placeholder="First Name*"
+            onChangeText={this.handleFName}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Last Name*"
+            onChangeText={this.handleLName}
+          />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Email Address"
-          onChangeText={this.handleEmail}
-        />
+          <TextInput
+            style={styles.input}
+            placeholder="Email Address*"
+            onChangeText={this.handleEmail}
+          />
 
-        <Text>
-          What university are you currently enrolled in or have graduated from?
-        </Text>
-        <TextInput style={styles.input} placeholder="University" />
+          <TextInput
+            style={styles.input}
+            placeholder="Password*"
+          />
 
-        <Text>What year are you in?</Text>
-        <TextInput style={styles.input} placeholder="Year" />
+          <TextInput
+            style={styles.input}
+            placeholder="Confirm Password*"
+            onChangeText={this.handlePassword}
+          />
 
-        <Text>Please upload your most recent transcript.</Text>
-        <Button title="Choose Photo" />
-      </View>
+          <TextInput style={styles.input} placeholder="Age" />
+
+          <Text>What year are you in?</Text>
+          <TextInput style={styles.input} placeholder="Education Level*" />
+
+          <Text>Please upload your most recent transcript.*</Text>
+          <Button title="Choose Photo" />
+
+          <TextInput
+            style={styles.input}
+            multiline={true}
+            placeholder="Motivation Statement*" />
+
+          <Text>
+            *Required Fields
+          </Text>
+          <TouchableOpacity
+            style={styles.submitButton}
+            onPress={() =>
+              this.register(
+                this.state.email,
+                this.state.password,
+                this.state.fName,
+                this.state.lName,
+                this.state.accountType
+              )
+            }
+          >
+            <Text>Submit</Text>
+          </TouchableOpacity>
+        </View>
+      </KeyboardAwareScrollView>
     );
   }
 }
@@ -95,6 +136,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#FCBA03",
     flex: 1,
+    height: 800,
     alignItems: "center",
     justifyContent: "center"
   },
@@ -108,6 +150,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",
+    flexDirection: "row",
     margin: 15
   },
 
@@ -116,5 +159,14 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 15,
     height: 40
+  },
+
+  Reg: {
+    width: 300,
+    height: 70,
+    fontSize: 35,
+    fontWeight: "bold"
+
   }
+
 });

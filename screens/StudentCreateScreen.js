@@ -4,9 +4,10 @@ import {
   Text,
   TextInput,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
 } from "react-native";
 import * as firebase from "firebase";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 class StudentCreateScreen extends Component {
   state = {
@@ -62,39 +63,66 @@ class StudentCreateScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <TextInput
-          style={styles.input}
-          placeholder="First Name"
-          onChangeText={this.handleFName}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Last Name"
-          onChangeText={this.handleLName}
-        />
+      <KeyboardAwareScrollView
+        style={{ flex: 1 }}
+      >
+        <View style={styles.container}>
+          <Text style={styles.Reg}>
+            Registration Form
+          </Text>
+          <TextInput
+            style={styles.input}
+            placeholder="First Name*"
+            onChangeText={this.handleFName}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Last Name*"
+            onChangeText={this.handleLName}
+          />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Email Address"
-          onChangeText={this.handleEmail}
-        />
+          <TextInput
+            style={styles.input}
+            placeholder="Email Address*"
+            onChangeText={this.handleEmail}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Password*"
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Confirm Password*"
+            onChangeText={this.handlePassword}
+          />
+          <TextInput style={styles.input} placeholder="University*" />
 
-        <Text>
-          What university are you currently enrolled in or have graduated from?
-        </Text>
-        <TextInput style={styles.input} placeholder="University" />
+          <TextInput style={styles.input} placeholder="Year" />
 
-        <Text>What year are you in?</Text>
-        <TextInput style={styles.input} placeholder="Year" />
+          <TextInput style={styles.input} placeholder="Major" />
 
-        <Text>What are you currently majoring in?</Text>
-        <TextInput style={styles.input} placeholder="Major" />
+          <TextInput style={styles.input} placeholder="Course Interests" />
 
-        <TouchableOpacity>
-          <Text>Submit</Text>
-        </TouchableOpacity>
-      </View>
+          <Text>
+            *Required Fields
+          </Text>
+
+          <TouchableOpacity
+            style={styles.submitButton}
+            onPress={() =>
+              this.register(
+                this.state.email,
+                this.state.password,
+                this.state.fName,
+                this.state.lName,
+                this.state.accountType
+              )
+            }
+          >
+            <Text>Submit</Text>
+          </TouchableOpacity>
+        </View>
+      </KeyboardAwareScrollView>
     );
   }
 }
@@ -105,6 +133,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#FCBA03",
     flex: 1,
+    height: 800,
     alignItems: "center",
     justifyContent: "center"
   },
@@ -126,5 +155,12 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 15,
     height: 40
+  },
+  Reg: {
+    width: 300,
+    height: 70,
+    fontSize: 35,
+    fontWeight: "bold"
+
   }
 });
