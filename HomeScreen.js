@@ -12,6 +12,12 @@ class HomeScreen extends React.Component {
         </View>
         <View style={styles.greybox}>
           <TouchableOpacity
+            onPress={() => navigate("Profile")}
+            style={styles.loginButton}
+          >
+            <Text>TESTING</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
             onPress={() => navigate("Login")}
             style={styles.loginButton}
           >
