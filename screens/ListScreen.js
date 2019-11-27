@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { FlatList, StyleSheet, View, Text, Image } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
-
 export default class ListScreen extends Component {
     render() {
         return (
@@ -52,7 +51,6 @@ export default class ListScreen extends Component {
         );
     }
 }
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -64,10 +62,6 @@ const styles = StyleSheet.create({
         height: 44,
     },
 });
-
-
-
-
 // working
                         // { key: 'Devin' },
                         // { key: 'Dan' },
@@ -79,7 +73,3 @@ const styles = StyleSheet.create({
                         // { key: 'Jillian' },
                         // { key: 'Jimmy' },
                         // { key: 'Julie' },
-
-
-
-
