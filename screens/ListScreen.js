@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, StyleSheet, View, Text, Image } from 'react-native';
+import { FlatList, StyleSheet, View, Text, Image, ScrollView } from 'react-native';
 import { Card, ListItem, Button, Icon, Divider } from 'react-native-elements'
 import BottomBar from '../components/BottomBar';
 
@@ -66,7 +66,8 @@ export default class ListScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 22
+        paddingTop: 22,
+
     },
     item: {
         padding: 10,

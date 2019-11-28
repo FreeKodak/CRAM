@@ -13,7 +13,7 @@ class BottomBar extends React.Component {
         this.setState({ selectedIndex })
         const { navigate } = this.props.nav;
         if (selectedIndex == 0) {
-            navigate('Calendar');
+            navigate('Tutor');
         }
     }
 
