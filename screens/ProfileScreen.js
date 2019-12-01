@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import Header from "../components/Header";
 import StatsBar from "../components/StatsBar";
+import ProfileContent from "../components/ProfileContent";
 
 class ProfileScreen extends React.Component {
   render() {
@@ -9,6 +10,7 @@ class ProfileScreen extends React.Component {
       <View style={styles.container}>
         <Header />
         <StatsBar />
+        <ProfileContent />
       </View>
     );
   }

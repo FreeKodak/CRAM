@@ -1,14 +1,44 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text, ScrollView, TextInput } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  ScrollView,
+  TextInput,
+  Button
+} from "react-native";
+import firebase from "firebase";
 
 class ProfileContent extends React.Component {
+  state = {
+    user: ""
+  };
+
+  readUserData() {
+    firebase
+      .database()
+      .ref("users/")
+      .once("value", function(snapshot) {
+        console.log(snapshot.val());
+      });
+  }
+
+  // handleUser(input) {
+  //   this.setState({ user: input });
+  // }
+
+  componentDidMount() {
+    const { currentUser } = firebase.auth();
+    console.log(currentUser);
+  }
+
   render() {
     return (
       <ScrollView>
         <View>
-          <Text>Now we put the content here</Text>
+          <Text>Stuff here</Text>
           <View style={styles.textWrap}>
-            <TextInput></TextInput>
+            <Button onPress={this.componentDidMount} title="TEST"></Button>
           </View>
         </View>
       </ScrollView>
