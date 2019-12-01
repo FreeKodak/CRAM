@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  StyleSheet,
+  TouchableOpacity,
+  Image
+} from "react-native";
 import * as firebase from "firebase";
 //import ImagePicker from "react-native-image-picker"
 //import CameraRollPicker from "react-native-camera-roll-picker"
@@ -11,6 +19,9 @@ class CreateTutorScreen extends Component {
     password: "",
     fName: "",
     lName: "",
+    age: 0,
+    education: "",
+    motive: "",
     accountType: "Tutor"
   };
 
@@ -30,24 +41,36 @@ class CreateTutorScreen extends Component {
     this.setState({ lName: text });
   };
 
-  async register(email, pass, fname, lname) {
+  handleAge = text => {
+    this.setState({ age: text });
+  };
+
+  handleMotive = text => {
+    this.setState({ motive: text });
+  };
+
+  async register(email, pass, fname, lname, motive) {
     try {
       await firebase.auth().createUserWithEmailAndPassword(email, pass);
-      this.writeUserData(fname, lname, this.state.accountType);
-      alert("Account Created!");
+      this.writeUserData(fname, lname, this.state.accountType, email, motive);
+      alert(
+        "Application Submitted! Please allow up to a week for application to be processed."
+      );
     } catch (error) {
       alert(error.toString());
     }
   }
 
-  writeUserData(fname, lname, usertype) {
+  writeUserData(fname, lname, usertype, email, motive) {
     firebase
       .database()
       .ref("users/")
       .push({
         fname,
         lname,
-        usertype
+        usertype,
+        email,
+        motive
       })
       .then(data => {
         console.log("data ", data);
@@ -59,13 +82,9 @@ class CreateTutorScreen extends Component {
 
   render() {
     return (
-      <KeyboardAwareScrollView
-        style={{ flex: 1 }}
-      >
+      <KeyboardAwareScrollView style={{ flex: 1 }}>
         <View style={styles.container}>
-          <Text style={styles.Reg}>
-            Registration Form
-          </Text>
+          <Text style={styles.Reg}>Registration Form</Text>
           <TextInput
             style={styles.input}
             placeholder="First Name*"
@@ -83,10 +102,7 @@ class CreateTutorScreen extends Component {
             onChangeText={this.handleEmail}
           />
 
-          <TextInput
-            style={styles.input}
-            placeholder="Password*"
-          />
+          <TextInput style={styles.input} placeholder="Password*" />
 
           <TextInput
             style={styles.input}
@@ -105,11 +121,11 @@ class CreateTutorScreen extends Component {
           <TextInput
             style={styles.input}
             multiline={true}
-            placeholder="Motivation Statement*" />
+            placeholder="Motivation Statement*"
+            onChangeText={this.handleMotive}
+          />
 
-          <Text>
-            *Required Fields
-          </Text>
+          <Text>*Required Fields</Text>
           <TouchableOpacity
             style={styles.submitButton}
             onPress={() =>
@@ -118,7 +134,7 @@ class CreateTutorScreen extends Component {
                 this.state.password,
                 this.state.fName,
                 this.state.lName,
-                this.state.accountType
+                this.state.motive
               )
             }
           >
@@ -166,7 +182,5 @@ const styles = StyleSheet.create({
     height: 70,
     fontSize: 35,
     fontWeight: "bold"
-
   }
-
 });

@@ -4,7 +4,7 @@ import {
   Text,
   TextInput,
   StyleSheet,
-  TouchableOpacity,
+  TouchableOpacity
 } from "react-native";
 import * as firebase from "firebase";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -39,6 +39,9 @@ class StudentCreateScreen extends Component {
       await firebase.auth().createUserWithEmailAndPassword(email, pass);
       this.writeUserData(fname, lname, this.state.accountType);
       alert("Account Created!");
+
+      const { navigate } = this.props.navigation;
+      navigate("Map");
     } catch (error) {
       alert(error.toString());
     }
@@ -63,13 +66,9 @@ class StudentCreateScreen extends Component {
 
   render() {
     return (
-      <KeyboardAwareScrollView
-        style={{ flex: 1 }}
-      >
+      <KeyboardAwareScrollView style={{ flex: 1 }}>
         <View style={styles.container}>
-          <Text style={styles.Reg}>
-            Registration Form
-          </Text>
+          <Text style={styles.Reg}>Registration Form</Text>
           <TextInput
             style={styles.input}
             placeholder="First Name*"
@@ -86,10 +85,7 @@ class StudentCreateScreen extends Component {
             placeholder="Email Address*"
             onChangeText={this.handleEmail}
           />
-          <TextInput
-            style={styles.input}
-            placeholder="Password*"
-          />
+          <TextInput style={styles.input} placeholder="Password*" />
           <TextInput
             style={styles.input}
             placeholder="Confirm Password*"
@@ -103,9 +99,7 @@ class StudentCreateScreen extends Component {
 
           <TextInput style={styles.input} placeholder="Course Interests" />
 
-          <Text>
-            *Required Fields
-          </Text>
+          <Text>*Required Fields</Text>
 
           <TouchableOpacity
             style={styles.submitButton}
@@ -161,6 +155,5 @@ const styles = StyleSheet.create({
     height: 70,
     fontSize: 35,
     fontWeight: "bold"
-
   }
 });

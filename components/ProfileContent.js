@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-  AppRegistry,
-  StyleSheet,
-  View,
-  Text,
-  ScrollView,
-  TextInput
-} from "react-native";
+import { StyleSheet, View, Text, ScrollView, TextInput } from "react-native";
 
 class ProfileContent extends React.Component {
   render() {
