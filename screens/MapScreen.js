@@ -5,11 +5,17 @@ import FetchLocation from "../components/FetchLocation";
 import UsersMap from "../components/UsersMap";
 import { SearchBar } from 'react-native-elements';
 import BottomBar from "../components/BottomBar";
+import ListScreen from "../screens/ListScreen";
 
 export default class MapScreen extends React.Component {
 
     state = {
-        userLocation: null,
+        userLocation: {
+            latitude: 51.0447,
+            longitude: 114.0719,
+            latitudeDelta: 0.0105,
+            longitudeDelta: 0.0096
+        },
         show: true,
         search: '',
     }
@@ -45,7 +51,7 @@ export default class MapScreen extends React.Component {
                     {
                         this.state.show ? <FetchLocation onGetLocation={this.getUserLocationHandler} /> : <View style={styles.sbar}>
                             <SearchBar
-                                placeholder="Type Here..."
+                                placeholder="Search for tutors..."
                                 platform="ios"
                                 onChangeText={this.updateSearch}
                                 value={this.state.search}
@@ -60,7 +66,8 @@ export default class MapScreen extends React.Component {
                 >
                     <Text>View All Tutors</Text>
                 </TouchableOpacity>
-                <BottomBar />
+                <BottomBar nav={this.props.navigation}
+                />
             </View>
         );
     }
@@ -85,7 +92,7 @@ const styles = StyleSheet.create({
         margin: 4,
     },
     listButton: {
-        backgroundColor: 'grey',
+        backgroundColor: "grey",
         padding: 10,
         margin: 15,
         height: 25,

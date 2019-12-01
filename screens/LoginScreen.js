@@ -32,6 +32,11 @@ class LoginScreen extends Component {
     }
   }
 
+  bypass = () => {
+    const { navigate } = this.props.navigation;
+    navigate("Map");
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -54,6 +59,12 @@ class LoginScreen extends Component {
           onPress={() => this.login(this.state.email, this.state.password)}
         >
           <Text>Submit</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.submitButton}
+          onPress={() => this.bypass()}>
+          <Text>Bypass Login (Testing Only)</Text>
         </TouchableOpacity>
       </View>
     );

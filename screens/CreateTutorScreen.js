@@ -134,7 +134,7 @@ class CreateTutorScreen extends Component {
                 this.state.password,
                 this.state.fName,
                 this.state.lName,
-                this.state.motive
+                this.state.motive,
               )
             }
           >
