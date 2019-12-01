@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AppRegistry, StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import Header from "../components/Header";
 import StatsBar from "../components/StatsBar";
 

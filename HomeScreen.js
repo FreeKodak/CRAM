@@ -11,10 +11,7 @@ class HomeScreen extends React.Component {
           <Image source={require("./branding/logo.png")} />
         </View>
         <View style={styles.greybox}>
-          <TouchableOpacity
-            onPress={() => navigate("Profile")}
-            style={styles.loginButton}
-          >
+          <TouchableOpacity style={styles.loginButton}>
             <Text>TESTING</Text>
           </TouchableOpacity>
           <TouchableOpacity
