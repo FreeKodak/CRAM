@@ -22,7 +22,8 @@ class CreateTutorScreen extends Component {
     age: 0,
     education: "",
     motive: "",
-    accountType: "Tutor"
+    accountType: "Tutor",
+    userID: ""
   };
 
   handleEmail = text => {
@@ -49,13 +50,28 @@ class CreateTutorScreen extends Component {
     this.setState({ motive: text });
   };
 
-  async register(email, pass, fname, lname, motive) {
+  handleEducation = text => {
+    this.setState({ education: text });
+  };
+
+  getuser() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ userID: user.uid });
+        console.log("Here:" + this.state.userID);
+      } else {
+        console.log("WE ERRED BOIS");
+      }
+    });
+  }
+
+  async register(email, pass) {
     try {
       await firebase.auth().createUserWithEmailAndPassword(email, pass);
-      this.writeUserData(fname, lname, this.state.accountType, email, motive);
       alert(
         "Application Submitted! Please allow up to a week for application to be processed."
       );
+      this.getuser();
     } catch (error) {
       alert(error.toString());
     }
@@ -64,8 +80,8 @@ class CreateTutorScreen extends Component {
   writeUserData(fname, lname, usertype, email, motive) {
     firebase
       .database()
-      .ref("users/")
-      .push({
+      .ref("users/tutors/" + this.state.userID)
+      .set({
         fname,
         lname,
         usertype,
@@ -110,10 +126,18 @@ class CreateTutorScreen extends Component {
             onChangeText={this.handlePassword}
           />
 
-          <TextInput style={styles.input} placeholder="Age" />
+          <TextInput
+            style={styles.input}
+            placeholder="Age"
+            onChangeText={this.handleAge}
+          />
 
           <Text>What year are you in?</Text>
-          <TextInput style={styles.input} placeholder="Education Level*" />
+          <TextInput
+            style={styles.input}
+            placeholder="Education Level*"
+            onChangeText={this.handleEducation}
+          />
 
           <Text>Please upload your most recent transcript.*</Text>
           <Button title="Choose Photo" />
@@ -128,17 +152,23 @@ class CreateTutorScreen extends Component {
           <Text>*Required Fields</Text>
           <TouchableOpacity
             style={styles.submitButton}
+            onPress={() => this.register(this.state.email, this.state.password)}
+          >
+            <Text>Submit</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.submitButton}
             onPress={() =>
-              this.register(
-                this.state.email,
-                this.state.password,
+              this.writeUserData(
                 this.state.fName,
                 this.state.lName,
-                this.state.motive,
+                this.state.accountType,
+                this.state.email,
+                this.state.motive
               )
             }
           >
-            <Text>Submit</Text>
+            <Text>Continue</Text>
           </TouchableOpacity>
         </View>
       </KeyboardAwareScrollView>
@@ -152,7 +182,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#FCBA03",
     flex: 1,
-    height: 800,
+    height: 1000,
     alignItems: "center",
     justifyContent: "center"
   },

@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#FCBA03",
     flex: 1,
-    height: 800,
+    height: 1000,
     alignItems: "center",
     justifyContent: "center"
   },
