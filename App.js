@@ -11,12 +11,6 @@ import StudentCreateScreen from "./screens/StudentCreateScreen";
 import ListScreen from "./screens/ListScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 
-firebase.initializeApp({
-  apiKey: "AIzaSyCvXlvAEtNjCvtt8kquDYrSi4JOqGLZr2c",
-  authDomain: "cramapp-2997f.firebaseapp.com",
-  databaseURL: "https://cramapp-2997f.firebaseio.com",
-  storageBucket: "cramapp-2997f.appspot.com"
-});
 import MapScreen from "./screens/MapScreen";
 import TutorScreen from './screens/TutorScreen';
 

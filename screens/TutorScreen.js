@@ -1,5 +1,8 @@
 import React from 'react'
 import { Image, Text, View, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import BottomBar from "../components/BottomBar";
+import PresentationalComponent from '../components/PresentationalComponent';
+
 // I'll make this prettier later i know its ugly
 export default class TutorScreen extends React.Component {
 
@@ -15,34 +18,21 @@ export default class TutorScreen extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <TouchableOpacity style={styles.tutbut}>
-                    <Text style={styles.butText}>Manage Appointments</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.tutbut}>
-                    <Text style={styles.butText}>View Your Tutor Profile</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.tutbut}>
-                    <Text style={styles.butText}>Do Something Else</Text>
-                </TouchableOpacity>
-            </View>
+            <>
+                <View style={PresentationalComponent.TutorScreen_container}>
+                    <TouchableOpacity style={PresentationalComponent.TutorScreen_tutbut}>
+                        <Text style={PresentationalComponent.TutorScreen_butText}>Manage Appointments</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={PresentationalComponent.TutorScreen_tutbut}>
+                        <Text style={PresentationalComponent.TutorScreen_butText}>Set Availability</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={PresentationalComponent.TutorScreen_tutbut}>
+                        <Text style={PresentationalComponent.TutorScreen_butText}>Check In</Text>
+                    </TouchableOpacity>
+                </View>
+                <BottomBar nav={this.props.navigation}
+                />
+            </>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        alignItems: 'stretch',
-    },
-    tutbut: {
-        backgroundColor: 'grey',
-        height: '28%'
-    },
-    butText: {
-        textAlign: 'center',
-        textAlignVertical: 'center',
-    },
-})

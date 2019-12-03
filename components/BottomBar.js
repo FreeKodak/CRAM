@@ -1,7 +1,7 @@
 import React from "react";
 import { ButtonGroup } from "react-native-elements";
 
-class BottomBar extends React.Component {
+export default class BottomBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,6 +15,9 @@ class BottomBar extends React.Component {
         if (selectedIndex == 0) {
             navigate('Tutor');
         }
+        else if (selectedIndex == 2) {
+            navigate('Profile');
+        }
     }
 
     render() {
@@ -26,10 +29,8 @@ class BottomBar extends React.Component {
                 onPress={this.updateIndex}
                 selectedIndex={selectedIndex}
                 buttons={buttons}
-                containerStyle={{ height: 30 }}
+                containerStyle={{ height: 30, }}
             />
         )
     }
 }
-
-export default BottomBar;

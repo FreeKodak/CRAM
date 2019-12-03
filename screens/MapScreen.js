@@ -45,30 +45,32 @@ export default class MapScreen extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.welcome}>Welcome to CRAM!</Text>
-                <View style={styles.hider}>
-                    {
-                        this.state.show ? <FetchLocation onGetLocation={this.getUserLocationHandler} /> : <View style={styles.sbar}>
-                            <SearchBar
-                                placeholder="Search for tutors..."
-                                platform="ios"
-                                onChangeText={this.updateSearch}
-                                value={this.state.search}
-                            />
-                        </View>
-                    }
+            <>
+                <View style={styles.container}>
+                    <Text style={styles.welcome}>Welcome to CRAM!</Text>
+                    <View style={styles.hider}>
+                        {
+                            this.state.show ? <FetchLocation onGetLocation={this.getUserLocationHandler} /> : <View style={styles.sbar}>
+                                <SearchBar
+                                    placeholder="Search for tutors..."
+                                    platform="ios"
+                                    onChangeText={this.updateSearch}
+                                    value={this.state.search}
+                                />
+                            </View>
+                        }
+                    </View>
+                    <UsersMap userLocation={this.state.userLocation} />
+                    <TouchableOpacity
+                        style={styles.listButton}
+                        onPress={() => this.goList()}
+                    >
+                        <Text>View All Tutors</Text>
+                    </TouchableOpacity>
                 </View>
-                <UsersMap userLocation={this.state.userLocation} />
-                <TouchableOpacity
-                    style={styles.listButton}
-                    onPress={() => this.goList()}
-                >
-                    <Text>View All Tutors</Text>
-                </TouchableOpacity>
                 <BottomBar nav={this.props.navigation}
                 />
-            </View>
+            </>
         );
     }
 }
