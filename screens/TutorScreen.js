@@ -1,5 +1,9 @@
 import React from 'react'
 import { Image, Text, View, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import BottomBar from "../components/BottomBar";
+import PresentationalComponent from '../components/PresentationalComponent';
+import { Overlay } from 'react-native-elements';
+
 // I'll make this prettier later i know its ugly
 export default class TutorScreen extends React.Component {
 
@@ -12,37 +16,45 @@ export default class TutorScreen extends React.Component {
     // --------------------- And add this to the button for viewing profile
     //
     // onPress={() => this.goProfile()}
+    constructor(props) {
+        super(props);
+        this.state = {
+            isVisible: false,
+        }
+    }
+
+    showWarning = () => {
+        this.state.isVisible ? this.setState({ isVisible: false }) : this.setState({ isVisible: true });
+    }
 
     render() {
         return (
-            <View style={styles.container}>
-                <TouchableOpacity style={styles.tutbut}>
-                    <Text style={styles.butText}>Manage Appointments</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.tutbut}>
-                    <Text style={styles.butText}>View Your Tutor Profile</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.tutbut}>
-                    <Text style={styles.butText}>Do Something Else</Text>
-                </TouchableOpacity>
-            </View>
+            <>
+                <View style={PresentationalComponent.TutorScreen_container}>
+                    <TouchableOpacity style={PresentationalComponent.TutorScreen_tutbut}>
+                        <Text style={PresentationalComponent.TutorScreen_butText}>Manage Appointments</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={PresentationalComponent.TutorScreen_tutbut}>
+                        <Text style={PresentationalComponent.TutorScreen_butText}>Set Availability</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={PresentationalComponent.TutorScreen_tutbut}
+                        onPress={() => this.showWarning()}>
+                        <Text style={PresentationalComponent.TutorScreen_butText}>Check In</Text>
+                    </TouchableOpacity>
+                    <View>
+                        {
+                            this.state.isVisible ? <Overlay
+                                isVisible={this.state.isVisible}
+                                onBackdropPress={() => this.setState({ isVisible: false })}>
+                                <Text>Doing this will display your location to app users!</Text>
+                            </Overlay> : <View></View>
+                        }
+                    </View>
+                </View>
+                <BottomBar nav={this.props.navigation}
+                />
+            </>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        alignItems: 'stretch',
-    },
-    tutbut: {
-        backgroundColor: 'grey',
-        height: '28%'
-    },
-    butText: {
-        textAlign: 'center',
-        textAlignVertical: 'center',
-    },
-})

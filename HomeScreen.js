@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 
 class HomeScreen extends React.Component {
+
+
   render() {
     const { navigate } = this.props.navigation;
     return (
@@ -11,8 +13,10 @@ class HomeScreen extends React.Component {
           <Image source={require("./branding/logo.png")} />
         </View>
         <View style={styles.greybox}>
-          <TouchableOpacity style={styles.loginButton}>
-            <Text>TESTING</Text>
+          <TouchableOpacity
+            style={styles.loginButton}
+            onPress={() => navigate("Cdr")}>
+            <Text>CALNDR</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => navigate("Login")}
