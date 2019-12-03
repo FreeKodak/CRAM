@@ -1,5 +1,6 @@
 import React from "react";
 import { ButtonGroup } from "react-native-elements";
+import firebase from "firebase";
 
 class BottomBar extends React.Component {
   constructor(props) {

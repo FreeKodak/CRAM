@@ -1,15 +1,27 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
+import firebase from "firebase";
+import { func } from "prop-types";
 
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { currentUser: "" };
-    this.getuser = this.getuser.bind(this);
+    this.state = {
+      loggedIn: true,
+      currentUser: "",
+      firstName: "first",
+      lastName: "last",
+      education: ""
+    };
+    this.getUserData = this.getUserData.bind(this);
+
+    this.getuserID = this.getuserID.bind(this);
+
+    this.setLastName = this.setLastName.bind(this);
   }
 
   //grabs the ID of the logged in user and assigns it to the state
-  getuser() {
+  getuserID() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.setState({ currentUser: user.uid });
@@ -18,6 +30,43 @@ class Header extends React.Component {
         console.log("WE ERRED BOIS");
       }
     });
+  }
+
+  getUserData() {
+    var userId = firebase.auth().currentUser.uid;
+
+    return firebase
+      .database()
+      .ref("users/tutors/" + userId + "/fname")
+      .once("value")
+      .then(function(snapshot) {
+        var fname = snapshot.val();
+        this.setLastName(fname);
+      });
+
+    // const { fname } = firebase
+    //   .database()
+    //   .ref("users/tutors/" + userId + "/fname");
+    // this.setState({ firstName: fname });
+
+    // var lname = firebase.database().ref("users/tutors/" + userId + "/lname");
+
+    // console.log(lname);
+
+    // lname.on("value", function(snapshot) {
+    //   setLastName(snapshot.val());
+    // });
+  }
+
+  setLastName(name) {
+    this.setState({ firstName: name });
+  }
+
+  componentWillMount() {
+    this.getuserID();
+    this.getUserData();
+    console.log(this.state.firstName);
+    console.log(this.state.lastName);
   }
 
   render() {
@@ -29,7 +78,9 @@ class Header extends React.Component {
               style={styles.profilepic}
               source={require("../branding/profileicon.jpg")}
             />
-            <Text style={styles.name}>THE BIGGEST HUSTLA</Text>
+            <Text style={styles.name}>
+              {this.state.firstName + " " + this.state.lastName}
+            </Text>
             <Text style={styles.education}> - PhD IN THAT HONEY - </Text>
           </View>
         </View>
