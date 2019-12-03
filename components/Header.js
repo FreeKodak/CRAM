@@ -62,12 +62,12 @@ class Header extends React.Component {
     this.setState({ firstName: name });
   }
 
-  componentWillMount() {
-    this.getuserID();
-    this.getUserData();
-    console.log(this.state.firstName);
-    console.log(this.state.lastName);
-  }
+  // componentWillMount() {
+  //   this.getuserID();
+  //   this.getUserData();
+  //   console.log(this.state.firstName);
+  //   console.log(this.state.lastName);
+  // }
 
   render() {
     return (
