@@ -2,6 +2,24 @@ import React, { Component } from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { currentUser: "" };
+    this.getuser = this.getuser.bind(this);
+  }
+
+  //grabs the ID of the logged in user and assigns it to the state
+  getuser() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ currentUser: user.uid });
+        console.log(this.state.currentUser);
+      } else {
+        console.log("WE ERRED BOIS");
+      }
+    });
+  }
+
   render() {
     return (
       <View style={styles.headerBackground}>

@@ -15,7 +15,8 @@ class StudentCreateScreen extends Component {
     password: "",
     fName: "",
     lName: "",
-    accountType: "Student"
+    accountType: "Student",
+    userID: ""
   };
 
   handleEmail = text => {
@@ -34,14 +35,22 @@ class StudentCreateScreen extends Component {
     this.setState({ lName: text });
   };
 
-  async register(email, pass, fname, lname) {
+  getuser() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ userID: user.uid });
+        console.log("Here:" + this.state.userID);
+      } else {
+        console.log("WE ERRED BOIS");
+      }
+    });
+  }
+
+  async register(email, pass) {
     try {
       await firebase.auth().createUserWithEmailAndPassword(email, pass);
-      this.writeUserData(fname, lname, this.state.accountType);
       alert("Account Created!");
-
-      const { navigate } = this.props.navigation;
-      navigate("Map");
+      this.getuser();
     } catch (error) {
       alert(error.toString());
     }
@@ -50,14 +59,16 @@ class StudentCreateScreen extends Component {
   writeUserData(fname, lname, usertype) {
     firebase
       .database()
-      .ref("users/")
-      .push({
+      .ref("users/students/" + this.state.userID)
+      .set({
         fname,
         lname,
         usertype
       })
       .then(data => {
         console.log("data ", data);
+        const { navigate } = this.props.navigation;
+        navigate("Map");
       })
       .catch(error => {
         console.log("error ", error);
@@ -114,6 +125,18 @@ class StudentCreateScreen extends Component {
             }
           >
             <Text>Submit</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.submitButton}
+            onPress={() =>
+              this.writeUserData(
+                this.state.fName,
+                this.state.lName,
+                this.state.accountType
+              )
+            }
+          >
+            <Text>Continue</Text>
           </TouchableOpacity>
         </View>
       </KeyboardAwareScrollView>
