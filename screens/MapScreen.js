@@ -36,6 +36,7 @@ export default class MapScreen extends React.Component {
                 show: false,
             })
         }, err => console.log(err));
+        console.log(this.state.userLocation);
     }
 
     goList = () => {
