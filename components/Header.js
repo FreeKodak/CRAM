@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import firebase from "firebase";
 import { func } from "prop-types";
+import PresentationalComponent from '../components/PresentationalComponent';
+
 
 class Header extends React.Component {
   constructor(props) {
