@@ -26,10 +26,6 @@ class ProfileContent extends React.Component {
       });
   }
 
-  componentDidMount() {
-    const { userObject } = firebase.auth();
-  }
-
   //grabs the ID of the logged in user and assigns it to the state
   getuser() {
     firebase.auth().onAuthStateChanged(user => {
