@@ -1,12 +1,10 @@
+"use strict";
 import React, { Component } from "react";
-import {
-  Image,
-  Text,
-  View,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity
-} from "react-native";
+import { Image, Text, View, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import { NavigationEvents } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import { createAppContainer } from "react-navigation";
+import * as firebase from "firebase";
 
 class LoginScreen extends Component {
   state = {
@@ -22,9 +20,22 @@ class LoginScreen extends Component {
     this.setState({ password: text });
   };
 
-  login = (email, pass) => {
-    alert("email: " + email + " password: " + pass);
-  };
+  async login(email, pass) {
+    try {
+      await firebase.auth().signInWithEmailAndPassword(email, pass);
+      alert("Logged in!");
+      const { navigate } = this.props.navigation;
+
+      navigate("Map");
+    } catch (error) {
+      alert(error.toString());
+    }
+  }
+
+  bypass = () => {
+    const { navigate } = this.props.navigation;
+    navigate("Map");
+  }
 
   render() {
     return (
@@ -48,6 +59,12 @@ class LoginScreen extends Component {
           onPress={() => this.login(this.state.email, this.state.password)}
         >
           <Text>Submit</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.submitButton}
+          onPress={() => this.bypass()}>
+          <Text>Bypass Login (Testing Only)</Text>
         </TouchableOpacity>
       </View>
     );
