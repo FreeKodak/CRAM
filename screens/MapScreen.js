@@ -10,7 +10,6 @@ import {
 import { Button } from "react-native-elements";
 import FetchLocation from "../components/FetchLocation";
 import UsersMap from "../components/UsersMap";
-import { SearchBar } from "react-native-elements";
 import BottomBar from "../components/BottomBar";
 import ListScreen from "../screens/ListScreen";
 
@@ -62,23 +61,19 @@ export default class MapScreen extends React.Component {
             {this.state.show ? (
               <FetchLocation onGetLocation={this.getUserLocationHandler} />
             ) : (
-              <View style={styles.sbar}>
-                <SearchBar
-                  placeholder="Search for tutors..."
-                  platform="ios"
-                  onChangeText={this.updateSearch}
-                  value={this.state.search}
-                />
-              </View>
-            )}
+                <View style={styles.sbar}>
+
+                  <TouchableOpacity
+                    style={styles.listButton}
+                    onPress={() => this.goList()}
+                  >
+                    <Text style={styles.listButton_text}>Find A Tutor</Text>
+                  </TouchableOpacity>
+                </View>
+              )}
           </View>
           <UsersMap userLocation={this.state.userLocation} />
-          <TouchableOpacity
-            style={styles.listButton}
-            onPress={() => this.goList()}
-          >
-            <Text>View All Tutors</Text>
-          </TouchableOpacity>
+
         </View>
         <BottomBar nav={this.props.navigation} />
       </>
@@ -103,11 +98,20 @@ const styles = StyleSheet.create({
     margin: 4
   },
   listButton: {
-    backgroundColor: "grey",
-    padding: 10,
-    margin: 15,
-    height: 25,
-    width: "60%",
-    justifyContent: "center"
+    backgroundColor: 'blue',
+    borderColor: 'white',
+    borderWidth: 1,
+    borderRadius: 12,
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold',
+    overflow: 'hidden',
+    padding: 12,
+    textAlign: 'center',
+  },
+  listButton_text: {
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    color: 'white'
   }
 });
