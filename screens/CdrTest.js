@@ -195,7 +195,7 @@ export default class CdrTest extends React.Component {
                     extraData={this.state.refresh}
                     renderItem={({ item }) =>
                         <View>
-                            <Text>{item.key} {item.appt}</Text>
+                            <Text style={styles.bookngs}>{item.key} {item.appt}</Text>
                         </View>}
                 />
             </View>
@@ -251,6 +251,11 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         textAlignVertical: 'center',
         color: 'white'
+    },
+    bookngs: {
+        textAlign: "center",
+        fontSize: 18,
+        paddingBottom: 4
     }
 
 

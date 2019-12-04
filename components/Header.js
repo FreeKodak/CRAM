@@ -69,7 +69,8 @@ const styles = StyleSheet.create({
     height: 300,
     borderRadius: 100,
     borderColor: "rgba(0,0,0,0.4)",
-    borderWidth: 16
+    borderWidth: 16,
+    alignItems: "center"
   },
 
   profilepic: {
@@ -85,13 +86,15 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontSize: 16,
     color: "#fff",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    paddingBottom: 10,
   },
 
   education: {
     fontSize: 14,
     color: "#0394c0",
     fontWeight: "300",
-    fontStyle: "italic"
+    fontStyle: "italic",
+    paddingBottom: 10,
   }
 });

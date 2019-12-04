@@ -22,11 +22,18 @@ class ProfileScreen extends React.Component {
     this.getuser = this.getuser.bind(this);
   }
 
+  static navigationOptions = {
+    title: 'Profle',
+    headerStyle: {
+      backgroundColor: '#000',
+    }
+  }
+
   readUserData() {
     firebase
       .database()
       .ref("users/")
-      .once("value", function(snapshot) {
+      .once("value", function (snapshot) {
         console.log(snapshot.val());
       });
   }
@@ -53,7 +60,7 @@ class ProfileScreen extends React.Component {
       var tempFName = "";
       var tempLName = "";
       var tempBio = "";
-      inside.forEach(function(item, index) {
+      inside.forEach(function (item, index) {
         if (inside[index]["ID"] == userID) {
           tempFName = inside[index]["fname"];
           tempLName = inside[index]["lname"];
