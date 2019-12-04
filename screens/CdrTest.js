@@ -56,6 +56,7 @@ export default class CdrTest extends React.Component {
         apts.push({ key: monthToInt(this.state.lastChosenDay.dateString), appt: '@ ' + this.state.time1 + ' - ' + this.state.time2 })
         this.setState({ bookings: apts })
         this.setState({ refresh: !this.state.refresh })
+        alert("Added booking!")
         console.log(this.state.bookings)
     }
 
