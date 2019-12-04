@@ -3,7 +3,15 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 
 class HomeScreen extends React.Component {
-
+  static navigationOptions = {
+    headerStyle: {
+      backgroundColor: "grey"
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontWeight: "bold"
+    }
+  };
 
   render() {
     const { navigate } = this.props.navigation;
@@ -15,7 +23,8 @@ class HomeScreen extends React.Component {
         <View style={styles.greybox}>
           <TouchableOpacity
             style={styles.loginButton}
-            onPress={() => navigate("Cdr")}>
+            onPress={() => navigate("Cdr")}
+          >
             <Text>CALNDR</Text>
           </TouchableOpacity>
           <TouchableOpacity
