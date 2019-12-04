@@ -12,15 +12,16 @@ import ListScreen from "./screens/ListScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 
 import MapScreen from "./screens/MapScreen";
-import TutorScreen from './screens/TutorScreen';
-import CdrTest from './screens/CdrTest';
+import TutorScreen from "./screens/TutorScreen";
+import CdrTest from "./screens/CdrTest";
+import { db } from "./config";
 
-firebase.initializeApp({
-  apiKey: "AIzaSyCvXlvAEtNjCvtt8kquDYrSi4JOqGLZr2c",
-  authDomain: "cramapp-2997f.firebaseapp.com",
-  databaseURL: "https://cramapp-2997f.firebaseio.com",
-  storageBucket: "cramapp-2997f.appspot.com"
-});
+// firebase.initializeApp({
+//   apiKey: "AIzaSyCvXlvAEtNjCvtt8kquDYrSi4JOqGLZr2c",
+//   authDomain: "cramapp-2997f.firebaseapp.com",
+//   databaseURL: "https://cramapp-2997f.firebaseio.com",
+//   storageBucket: "cramapp-2997f.appspot.com"
+// });
 
 const MainNavigatior = createStackNavigator({
   Home: { screen: HomeScreen },
@@ -32,7 +33,7 @@ const MainNavigatior = createStackNavigator({
   List: { screen: ListScreen },
   Profile: { screen: ProfileScreen },
   Tutor: { screen: TutorScreen },
-  Cdr: { screen: CdrTest },
+  Cdr: { screen: CdrTest }
 });
 
 const App = createAppContainer(MainNavigatior);
