@@ -23,6 +23,12 @@ class HomeScreen extends React.Component {
           >
             <Text>Register</Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.registerButton}
+            onPress={() => navigate("Pay")}
+          >
+            <Text>Pay</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );

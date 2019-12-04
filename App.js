@@ -9,6 +9,10 @@ import CreateAccScreen from "./screens/CreateAccScreen";
 import CreateTutorScreen from "./screens/CreateTutorScreen";
 import StudentCreateScreen from "./screens/StudentCreateScreen";
 import ListScreen from "./screens/ListScreen";
+import ChatScreen from "./screens/ChatScreen";
+import finishedChatScreen from "./screens/finishedChatScreen";
+import payScreen from "./screens/payScreen";
+
 
 firebase.initializeApp({
   apiKey: "AIzaSyCvXlvAEtNjCvtt8kquDYrSi4JOqGLZr2c",
@@ -25,7 +29,10 @@ const MainNavigatior = createStackNavigator({
   CreateTutor: { screen: CreateTutorScreen },
   StudentCreate: { screen: StudentCreateScreen },
   Map: { screen: MapScreen },
-  List: { screen: ListScreen }
+  List: { screen: ListScreen },
+  Chat: { screen: ChatScreen },
+  finishedChat: { screen: finishedChatScreen },
+  Pay: { screen: payScreen }
 });
 
 const App = createAppContainer(MainNavigatior);

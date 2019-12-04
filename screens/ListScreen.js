@@ -1,10 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { FlatList, StyleSheet, View, Text, Image } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
-export default class ListScreen extends Component {
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
+export default class ListScreen extends React.Component {
+
+    goChat = () => {
+        const { navigate } = this.props.navigation;
+        navigate("Chat");
+    }
     render() {
         return (
+
             <View style={styles.container}>
+
+                <TouchableOpacity
+                    onPress={() => this.goChat()}
+                >
+                    <Text>
+                        Message
+                    </Text>
+                </TouchableOpacity>
                 <FlatList
                     data={[
                         {
