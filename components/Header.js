@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import firebase from "firebase";
 import { func } from "prop-types";
-import PresentationalComponent from '../components/PresentationalComponent';
-
+import PresentationalComponent from "../components/PresentationalComponent";
 
 class Header extends React.Component {
   constructor(props) {
@@ -69,7 +68,9 @@ const styles = StyleSheet.create({
     height: 300,
     borderRadius: 100,
     borderColor: "rgba(0,0,0,0.4)",
-    borderWidth: 16
+    borderWidth: 16,
+    alignItems: "center",
+    paddingBottom: 10
   },
 
   profilepic: {
@@ -92,6 +93,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#0394c0",
     fontWeight: "300",
-    fontStyle: "italic"
+    fontStyle: "italic",
+    paddingBottom: 10
   }
 });
