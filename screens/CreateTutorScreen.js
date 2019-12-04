@@ -82,6 +82,7 @@ class CreateTutorScreen extends Component {
       .database()
       .ref("users/tutors/" + this.state.userID)
       .set({
+        ID,
         fname,
         lname,
         usertype,
@@ -160,6 +161,7 @@ class CreateTutorScreen extends Component {
             style={styles.submitButton}
             onPress={() =>
               this.writeUserData(
+                this.state.userID,
                 this.state.fName,
                 this.state.lName,
                 this.state.accountType,

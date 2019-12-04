@@ -56,11 +56,12 @@ class StudentCreateScreen extends Component {
     }
   }
 
-  writeUserData(fname, lname, usertype) {
+  writeUserData(ID, fname, lname, usertype) {
     firebase
       .database()
       .ref("users/students/" + this.state.userID)
       .set({
+        ID,
         fname,
         lname,
         usertype
@@ -130,6 +131,7 @@ class StudentCreateScreen extends Component {
             style={styles.submitButton}
             onPress={() =>
               this.writeUserData(
+                this.state.userID,
                 this.state.fName,
                 this.state.lName,
                 this.state.accountType
