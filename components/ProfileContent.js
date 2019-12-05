@@ -44,7 +44,6 @@ class ProfileContent extends React.Component {
         <View>
           <View style={styles.textWrap}>
             <Text style={styles.text}>Stuff here</Text>
-            <Button onPress={this.getuser} title="USER PLEASE"></Button>
           </View>
         </View>
       </ScrollView>

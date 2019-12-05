@@ -5,7 +5,8 @@ import {
   View,
   Text,
   Image,
-  ScrollView
+  ScrollView,
+  TouchableOpacity
 } from "react-native";
 import { Card, ListItem, Button, Icon, Divider } from "react-native-elements";
 import BottomBar from "../components/BottomBar";
@@ -49,8 +50,17 @@ export default class ListScreen extends Component {
       let data = snapshot.val();
 
       this.setState({ Users: Object.values(data) });
+    });
+  }
 
-      console.log("This: " + this.state.Users[0]["ID"]);
+  toProfile(id, fname, lname, bio) {
+    console.log("In profile switch " + fname);
+    const { navigate } = this.props.navigation;
+    navigate("ViewProfile", {
+      userID: id,
+      userFName: fname,
+      userLName: lname,
+      userBio: bio
     });
   }
 
@@ -69,7 +79,6 @@ export default class ListScreen extends Component {
                 />
                 <View style={styles.tutText}>
                   <Text style={styles.item}>{item.fname}</Text>
-                  {/* <Text style={styles.class}>CPSC 405</Text> */}
                   <Text style={styles.rating}>{item.rating}</Text>
                   <Divider
                     style={{
@@ -90,6 +99,22 @@ export default class ListScreen extends Component {
                 <Text style={{ paddingRight: 40, fontSize: 28 }}>
                   {item.class3}
                 </Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    this.props.navigation.navigate("ViewProfile", {
+                      ID: item.ID,
+                      FN: item.fname,
+                      LN: item.lname,
+                      Bio: item.bio,
+                      c1: item.class1,
+                      c2: item.class2,
+                      c3: item.class3,
+                      rating: item.rating
+                    });
+                  }}
+                >
+                  <Text>View Profile and Book!</Text>
+                </TouchableOpacity>
               </View>
             </View>
           )}
