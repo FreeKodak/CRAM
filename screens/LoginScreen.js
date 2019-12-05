@@ -93,9 +93,20 @@ const styles = StyleSheet.create({
   },
 
   submitButton: {
+    shadowColor: 'rgba(0,0,0, .4)', // IOS
+    shadowOffset: { height: 2, width: 2 }, // IOS
+    shadowOpacity: 1, // IOS
+    shadowRadius: 1, //IOS
+    width: 100,
     backgroundColor: "grey",
-    padding: 10,
-    margin: 15,
-    height: 40
+    marginRight: 40,
+    marginLeft: 40,
+    marginTop: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 25,
+    paddingRight: 25,
+    borderRadius: 10,
+    borderWidth: 1
   }
 });
