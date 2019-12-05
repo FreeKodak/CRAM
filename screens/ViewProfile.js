@@ -46,9 +46,7 @@ class ViewProfile extends React.Component {
           style={styles.test}
           onPress={() => navigation.navigate("Chat")}
         >
-          <Text style={styles.test}>
-            Message me!
-          </Text>
+          <Text style={styles.test}>replace me!</Text>
         </TouchableOpacity>
         <TouchableOpacity
           backgroundColor="white"
@@ -57,7 +55,6 @@ class ViewProfile extends React.Component {
         >
           <Text>Get ID</Text>
         </TouchableOpacity>
-
       </View>
     );
   }
