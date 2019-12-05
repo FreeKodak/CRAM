@@ -28,7 +28,12 @@ export default class ListScreen extends Component {
       lastName: "",
       Bio: "",
       Type: "",
-      Users: [{}]
+      Users: [{}],
+      search: "",
+      searchEq: false,
+      class1: "",
+      class2: "",
+      class3: ""
     };
     this.getuser = this.getuser.bind(this);
   }
@@ -54,18 +59,38 @@ export default class ListScreen extends Component {
     });
   }
 
-  toProfile(id, fname, lname, bio) {
-    console.log("In profile switch " + fname);
-    const { navigate } = this.props.navigation;
-    navigate("ViewProfile", {
-      userID: id,
-      userFName: fname,
-      userLName: lname,
-      userBio: bio
-    });
+  updateSearch = search => {
+    this.setState({ search: search });
+  };
+
+  checkSearch2(item) {
+    if (
+      item.class1 == this.state.search ||
+      item.class2 == this.state.search ||
+      item.class3 == this.state.search
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   render() {
+    const { search } = this.state.search;
+    var items = [];
+    console.log("Search: " + this.state.search);
+    this.state.Users.forEach(element => {
+      console.log("Class1: " + element["class1"]);
+      if (
+        element["class1"] == this.state.search ||
+        element["class2"] == this.state.search ||
+        element["class3"] == this.state.search
+      ) {
+        items.push(element);
+      } else {
+      }
+    });
+
     return (
       <View style={styles.container}>
         <SearchBar
@@ -74,8 +99,9 @@ export default class ListScreen extends Component {
           onChangeText={this.updateSearch}
           value={this.state.search}
         />
+
         <FlatList
-          data={this.state.Users}
+          data={items}
           renderItem={({ item }) => (
             <View style={styles.wrapper}>
               <View style={styles.tutor}>
