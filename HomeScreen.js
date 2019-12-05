@@ -21,15 +21,12 @@ class HomeScreen extends React.Component {
           <Image source={require("./branding/logo.png")} />
         </View>
         <View style={styles.greybox}>
-<<<<<<< HEAD
-=======
           {/* <TouchableOpacity
             style={styles.loginButton}
             onPress={() => navigate("Cdr")}
           >
             <Text>CALNDR</Text>
           </TouchableOpacity> */}
->>>>>>> feature
           <TouchableOpacity
             onPress={() => navigate("Login")}
             style={styles.loginButton}

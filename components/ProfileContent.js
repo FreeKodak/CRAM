@@ -104,8 +104,9 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     padding: 12,
     textAlign: 'center',
-    textWrap: {
-      alignItems: "center"
-    }
+  },
+  textWrap: {
+    alignItems: "center"
+
   }
 });

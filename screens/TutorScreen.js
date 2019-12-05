@@ -66,8 +66,8 @@ export default class TutorScreen extends React.Component {
                 <Text>Doing this will display your location to app users!</Text>
               </Overlay>
             ) : (
-              <View></View>
-            )}
+                <View></View>
+              )}
           </View>
         </View>
         <BottomBar2 nav={this.props.navigation} />
