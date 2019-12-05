@@ -43,7 +43,7 @@ class ProfileContent extends React.Component {
       <ScrollView>
         <View>
           <View style={styles.textWrap}>
-            <Text style={styles.text}>Stuff here</Text>
+            <Text style={styles.text}>Bio goes here</Text>
           </View>
         </View>
       </ScrollView>
@@ -60,5 +60,9 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "white"
+  },
+
+  textWrap: {
+    alignItems: "center"
   }
 });

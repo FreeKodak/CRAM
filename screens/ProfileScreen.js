@@ -23,17 +23,17 @@ class ProfileScreen extends React.Component {
   }
 
   static navigationOptions = {
-    title: 'Profle',
+    title: "Profle",
     headerStyle: {
-      backgroundColor: '#000',
+      backgroundColor: "#000"
     }
-  }
+  };
 
   readUserData() {
     firebase
       .database()
       .ref("users/")
-      .once("value", function (snapshot) {
+      .once("value", function(snapshot) {
         console.log(snapshot.val());
       });
   }
@@ -59,7 +59,7 @@ class ProfileScreen extends React.Component {
       var tempFName = "";
       var tempLName = "";
       var tempBio = "";
-      inside.forEach(function (item, index) {
+      inside.forEach(function(item, index) {
         if (inside[index]["ID"] == userID) {
           tempFName = inside[index]["fname"];
           tempLName = inside[index]["lname"];
@@ -83,9 +83,6 @@ class ProfileScreen extends React.Component {
         <Header fname={this.state.firstName} lname={this.state.lastName} />
         <StatsBar />
         <ProfileContent />
-        <TouchableOpacity onPress={console.log(this.state.lastName)}>
-          <Text style={styles.test}>Please Maam</Text>
-        </TouchableOpacity>
       </View>
     );
   }

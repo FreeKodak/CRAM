@@ -18,6 +18,9 @@ import ViewProfile from "./screens/ViewProfile";
 import ChatScreen from "./screens/ChatScreen";
 import finishedChatScreen from "./screens/finishedChatScreen";
 import ProfileScreenStudent from "./screens/ProfileScreenStudent";
+import SettingsScreen from "./screens/SettingsScreen";
+import LoginStudent from "./screens/LoginStudent";
+import LoginTutor from "./screens/LoginTutor";
 import { db } from "./config";
 
 // firebase.initializeApp({
@@ -42,7 +45,10 @@ const MainNavigatior = createStackNavigator({
   Pay: { screen: payScreen },
   Chat: { screen: ChatScreen },
   finishedChat: { screen: finishedChatScreen },
-  ProfileStudent: { screen: ProfileScreenStudent }
+  ProfileStudent: { screen: ProfileScreenStudent },
+  Settings: { screen: SettingsScreen },
+  StudentLogin: { screen: LoginStudent },
+  TutorLogin: { screen: LoginTutor }
 });
 
 const App = createAppContainer(MainNavigatior);
