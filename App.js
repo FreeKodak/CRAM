@@ -14,6 +14,7 @@ import ProfileScreen from "./screens/ProfileScreen";
 import MapScreen from "./screens/MapScreen";
 import TutorScreen from "./screens/TutorScreen";
 import CdrTest from "./screens/CdrTest";
+import ViewProfile from "./screens/ViewProfile";
 import { db } from "./config";
 
 // firebase.initializeApp({
@@ -34,7 +35,8 @@ const MainNavigatior = createStackNavigator({
   List: { screen: ListScreen },
   Profile: { screen: ProfileScreen },
   Tutor: { screen: TutorScreen },
-  Cdr: { screen: CdrTest }
+  Cdr: { screen: CdrTest },
+  ViewProfile: { screen: ViewProfile }
 });
 
 const App = createAppContainer(MainNavigatior);

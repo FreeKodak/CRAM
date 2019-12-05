@@ -41,9 +41,8 @@ class ProfileScreen extends React.Component {
   getuser = () => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        console.log("Inside ID: " + user.uid);
         this.setState({ currentUser: user.uid });
-        console.log("ID: " + this.state.currentUser);
+        console.log("PS ID: " + this.state.currentUser);
       } else {
         alert("Not logged in!");
       }
