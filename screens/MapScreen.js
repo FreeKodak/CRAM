@@ -62,7 +62,6 @@ export default class MapScreen extends React.Component {
               <FetchLocation onGetLocation={this.getUserLocationHandler} />
             ) : (
                 <View style={styles.sbar}>
-
                   <TouchableOpacity
                     style={styles.listButton}
                     onPress={() => this.goList()}

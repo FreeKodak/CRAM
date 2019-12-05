@@ -17,6 +17,7 @@ import CdrTest from "./screens/CdrTest";
 import ViewProfile from "./screens/ViewProfile";
 import ChatScreen from "./screens/ChatScreen";
 import finishedChatScreen from "./screens/finishedChatScreen";
+import Avail from "./screens/Avail";
 import { db } from "./config";
 
 // firebase.initializeApp({
@@ -39,9 +40,10 @@ const MainNavigatior = createStackNavigator({
   Tutor: { screen: TutorScreen },
   Cdr: { screen: CdrTest },
   ViewProfile: { screen: ViewProfile },
-  Pay: {screen: payScreen},
-  Chat: { screen: ChatScreen},
-  finishedChat: { screen: finishedChatScreen }
+  Pay: { screen: payScreen },
+  Chat: { screen: ChatScreen },
+  finishedChat: { screen: finishedChatScreen },
+  Avail: { screen: Avail },
 });
 
 const App = createAppContainer(MainNavigatior);

@@ -5,7 +5,8 @@ import {
   Text,
   ScrollView,
   TextInput,
-  Button
+  Button,
+  TouchableOpacity
 } from "react-native";
 import firebase from "firebase";
 
@@ -21,7 +22,7 @@ class ProfileContent extends React.Component {
     firebase
       .database()
       .ref("users/")
-      .once("value", function(snapshot) {
+      .once("value", function (snapshot) {
         console.log(snapshot.val());
       });
   }
@@ -39,11 +40,41 @@ class ProfileContent extends React.Component {
   }
 
   render() {
+    const { navigate } = this.props.nav;
     return (
       <ScrollView>
-        <View>
+        <View onPress={console.log("Made it: " + this.props.status)}>
           <View style={styles.textWrap}>
             <Text style={styles.text}>Stuff here</Text>
+            <View style={{ padding: 10 }}>
+              {this.props.status ?
+                (<TouchableOpacity
+                  backgroundColor="green"
+                  style={styles.but}
+                  onPress={() => navigate("Chat")}
+                >
+                  <Text style={{ color: 'white' }}>
+                    Available Now
+                </Text>
+                </TouchableOpacity>) : <TouchableOpacity
+                  backgroundColor="red"
+                  style={styles.but}
+                  onPress={() => navigate("Chat")}
+                >
+                  <Text style={{ color: 'white' }}>
+                    Not Available
+                </Text>
+                </TouchableOpacity>
+              }
+            </View>
+            <View style={{ padding: 10 }}>
+              <TouchableOpacity
+                style={styles.but}
+                onPress={() => navigate("Avail")}
+              >
+                <Text style={{ color: 'white' }}>Book a Session</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -56,9 +87,22 @@ export default ProfileContent;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#000"
+    backgroundColor: '#463F3A',
   },
   text: {
     color: "white"
+  },
+  but: {
+    backgroundColor: '#8A817C',
+    borderColor: 'white',
+    borderWidth: 1,
+    borderRadius: 12,
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold',
+    overflow: 'hidden',
+    padding: 12,
+    textAlign: 'center',
+    // paddingBottom: 20,
   }
 });

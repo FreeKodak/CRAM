@@ -20,7 +20,8 @@ class ViewProfile extends React.Component {
       rating: 4.0,
       class1: "",
       class2: "",
-      class3: ""
+      class3: "",
+      // status = null
     };
   }
 
@@ -30,7 +31,8 @@ class ViewProfile extends React.Component {
       ID: JSON.stringify(navigation.getParam("ID", "NO-ID")),
       firstName: JSON.stringify(navigation.getParam("FN", "Name")),
       lastName: JSON.stringify(navigation.getParam("LN", "Name")),
-      Bio: JSON.stringify(navigation.getParam("Bio", "Bio"))
+      Bio: JSON.stringify(navigation.getParam("Bio", "Bio")),
+      status: JSON.stringify(navigation.getParam("avail", 'false'))
     });
   }
 
@@ -39,25 +41,8 @@ class ViewProfile extends React.Component {
     return (
       <View style={styles.container}>
         <Header fname={this.state.firstName} lname={this.state.lastName} />
-        <StatsBar />
-        <ProfileContent ID={this.state.ID} />
-        <TouchableOpacity
-          backgroundColor="white"
-          style={styles.test}
-          onPress={() => navigation.navigate("Chat")}
-        >
-          <Text style={styles.test}>
-            Message me!
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          backgroundColor="white"
-          style={styles.test}
-          onPress={() => console.log(this.state.ID)}
-        >
-          <Text>Get ID</Text>
-        </TouchableOpacity>
-
+        <StatsBar onPress={console.log(this.state.status)} />
+        <ProfileContent ID={this.state.ID} nav={this.props.navigation} avail={this.state.status} />
       </View>
     );
   }
