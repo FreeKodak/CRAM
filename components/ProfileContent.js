@@ -1,3 +1,4 @@
+"use strict";
 import React, { Component } from "react";
 import {
   StyleSheet,
@@ -5,10 +6,11 @@ import {
   Text,
   ScrollView,
   TextInput,
+  TouchableOpacity,
   Button
 } from "react-native";
 import firebase from "firebase";
-import { TouchableHighlight, TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableHighlight } from "react-native-gesture-handler";
 import { NavigationEvents } from "react-navigation";
 
 class ProfileContent extends React.Component {
@@ -41,11 +43,13 @@ class ProfileContent extends React.Component {
   }
 
   render() {
+    // const { navigate } = this.props.navigation;
     return (
       <ScrollView>
         <View>
           <View style={styles.textWrap}>
             <Text style={styles.text}>Bio goes here</Text>
+
           </View>
         </View>
       </ScrollView>
