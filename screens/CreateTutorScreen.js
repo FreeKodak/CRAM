@@ -77,7 +77,7 @@ class CreateTutorScreen extends Component {
     }
   }
 
-  writeUserData(fname, lname, usertype, email, motive) {
+  writeUserData(ID, fname, lname, usertype, email, motive) {
     firebase
       .database()
       .ref("users/tutors/" + this.state.userID)
@@ -95,6 +95,16 @@ class CreateTutorScreen extends Component {
       .catch(error => {
         console.log("error ", error);
       });
+  }
+
+  doBoth(ID, fname, lname, usertype, email, motive) {
+    this.writeUserData(ID, fname, lname, usertype, email, motive);
+    this.tutorScreen();
+  }
+
+  tutorScreen() {
+    const { navigate } = this.props.navigation;
+    navigate("Tutor");
   }
 
   render() {
@@ -160,7 +170,7 @@ class CreateTutorScreen extends Component {
           <TouchableOpacity
             style={styles.submitButton}
             onPress={() =>
-              this.writeUserData(
+              this.doBoth(
                 this.state.userID,
                 this.state.fName,
                 this.state.lName,

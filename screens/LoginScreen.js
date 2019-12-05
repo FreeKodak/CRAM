@@ -1,6 +1,13 @@
 "use strict";
 import React, { Component } from "react";
-import { Image, Text, View, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  Image,
+  Text,
+  View,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity
+} from "react-native";
 import { NavigationEvents } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
@@ -35,7 +42,7 @@ class LoginScreen extends Component {
   bypass = () => {
     const { navigate } = this.props.navigation;
     navigate("Map");
-  }
+  };
 
   render() {
     return (
@@ -61,11 +68,11 @@ class LoginScreen extends Component {
           <Text>Submit</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.submitButton}
           onPress={() => this.bypass()}>
           <Text>Bypass Login (Testing Only)</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     );
   }
@@ -93,7 +100,7 @@ const styles = StyleSheet.create({
   },
 
   submitButton: {
-    shadowColor: 'rgba(0,0,0, .4)', // IOS
+    shadowColor: "rgba(0,0,0, .4)", // IOS
     shadowOffset: { height: 2, width: 2 }, // IOS
     shadowOpacity: 1, // IOS
     shadowRadius: 1, //IOS

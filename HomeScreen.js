@@ -21,12 +21,12 @@ class HomeScreen extends React.Component {
           <Image source={require("./branding/logo.png")} />
         </View>
         <View style={styles.greybox}>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={styles.loginButton}
             onPress={() => navigate("Cdr")}
           >
             <Text>CALNDR</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <TouchableOpacity
             onPress={() => navigate("Login")}
             style={styles.loginButton}
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   },
 
   loginButton: {
-    shadowColor: 'rgba(0,0,0, .4)', // IOS
+    shadowColor: "rgba(0,0,0, .4)", // IOS
     shadowOffset: { height: 2, width: 2 }, // IOS
     shadowOpacity: 1, // IOS
     shadowRadius: 1, //IOS
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   },
 
   registerButton: {
-    shadowColor: 'rgba(0,0,0, .4)', // IOS
+    shadowColor: "rgba(0,0,0, .4)", // IOS
     shadowOffset: { height: 2, width: 2 }, // IOS
     shadowOpacity: 1, // IOS
     shadowRadius: 1, //IOS

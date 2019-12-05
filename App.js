@@ -17,6 +17,7 @@ import CdrTest from "./screens/CdrTest";
 import ViewProfile from "./screens/ViewProfile";
 import ChatScreen from "./screens/ChatScreen";
 import finishedChatScreen from "./screens/finishedChatScreen";
+import ProfileScreenStudent from "./screens/ProfileScreenStudent";
 import { db } from "./config";
 
 // firebase.initializeApp({
@@ -25,7 +26,6 @@ import { db } from "./config";
 //   databaseURL: "https://cramapp-2997f.firebaseio.com",
 //   storageBucket: "cramapp-2997f.appspot.com"
 // });
-
 
 const MainNavigatior = createStackNavigator({
   Home: { screen: HomeScreen },
@@ -39,9 +39,10 @@ const MainNavigatior = createStackNavigator({
   Tutor: { screen: TutorScreen },
   Cdr: { screen: CdrTest },
   ViewProfile: { screen: ViewProfile },
-  Pay: {screen: payScreen},
-  Chat: { screen: ChatScreen},
-  finishedChat: { screen: finishedChatScreen }
+  Pay: { screen: payScreen },
+  Chat: { screen: ChatScreen },
+  finishedChat: { screen: finishedChatScreen },
+  ProfileStudent: { screen: ProfileScreenStudent }
 });
 
 const App = createAppContainer(MainNavigatior);
