@@ -89,7 +89,8 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   welcome: {
-    fontSize: 28
+    fontSize: 28,
+
   },
   hider: {},
   sbar: {
@@ -98,20 +99,26 @@ const styles = StyleSheet.create({
     margin: 4
   },
   listButton: {
-    backgroundColor: 'blue',
-    borderColor: 'white',
+    shadowColor: 'rgba(0,0,0, .4)', // IOS
+    shadowOffset: { height: 2, width: 2 }, // IOS
+    shadowOpacity: 1, // IOS
+    shadowRadius: 1, //IOS
+    width: 100,
+    backgroundColor: "grey",
+    marginRight: 40,
+    marginLeft: 40,
+    marginTop: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 25,
+    paddingRight: 25,
+    borderRadius: 10,
     borderWidth: 1,
-    borderRadius: 12,
-    color: 'white',
-    fontSize: 24,
-    fontWeight: 'bold',
-    overflow: 'hidden',
-    padding: 12,
-    textAlign: 'center',
+
   },
   listButton_text: {
     textAlign: 'center',
     textAlignVertical: 'center',
-    color: 'white'
+    color: 'black'
   }
 });

@@ -72,6 +72,10 @@ const styles = StyleSheet.create({
   },
 
   loginButton: {
+    shadowColor: 'rgba(0,0,0, .4)', // IOS
+    shadowOffset: { height: 2, width: 2 }, // IOS
+    shadowOpacity: 1, // IOS
+    shadowRadius: 1, //IOS
     width: 100,
     backgroundColor: "grey",
     marginRight: 40,
@@ -86,6 +90,10 @@ const styles = StyleSheet.create({
   },
 
   registerButton: {
+    shadowColor: 'rgba(0,0,0, .4)', // IOS
+    shadowOffset: { height: 2, width: 2 }, // IOS
+    shadowOpacity: 1, // IOS
+    shadowRadius: 1, //IOS
     width: 100,
     backgroundColor: "grey",
     marginRight: 40,
