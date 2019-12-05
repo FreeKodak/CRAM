@@ -44,10 +44,20 @@ class ViewProfile extends React.Component {
         <TouchableOpacity
           backgroundColor="white"
           style={styles.test}
+          onPress={() => navigation.navigate("Chat")}
+        >
+          <Text style={styles.test}>
+            Message me!
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          backgroundColor="white"
+          style={styles.test}
           onPress={() => console.log(this.state.ID)}
         >
           <Text>Get ID</Text>
         </TouchableOpacity>
+
       </View>
     );
   }
