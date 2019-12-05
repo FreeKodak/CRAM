@@ -91,9 +91,6 @@ export default class ListScreen extends Component {
       }
     });
 
-    console.log(this.state.Users);
-    console.log(items);
-
     return (
       <View style={styles.container}>
         <SearchBar
