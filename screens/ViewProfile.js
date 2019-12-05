@@ -41,22 +41,18 @@ class ViewProfile extends React.Component {
         <Header fname={this.state.firstName} lname={this.state.lastName} />
         <StatsBar />
         <ProfileContent ID={this.state.ID} />
-        <TouchableOpacity
-          backgroundColor="white"
-          style={styles.test}
-          onPress={() => navigation.navigate("Chat")}
-        >
-          <Text style={styles.test}>
-            Message me!
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          backgroundColor="white"
-          style={styles.test}
-          onPress={() => console.log(this.state.ID)}
-        >
-          <Text>Get ID</Text>
-        </TouchableOpacity>
+        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-betweem' }}>
+          <View style={{ paddingLeft: '10%', paddingRight: '5%', paddingTop: 16 }}>
+            <TouchableOpacity style={styles.but1} onPress={() => navigation.navigate("Chat")}>
+              <Text style={{ color: 'white' }}>Available Now</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={{ paddingLeft: '5%', paddingRight: '10%', paddingTop: 16 }}>
+            <TouchableOpacity style={styles.but2} onPress={() => navigation.navigate("Cdr")}>
+              <Text style={{ color: 'white' }}>Book a Session</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
 
       </View>
     );
@@ -73,5 +69,29 @@ const styles = StyleSheet.create({
 
   test: {
     color: "white"
+  },
+  but1: {
+    backgroundColor: 'blue',
+    borderColor: 'white',
+    borderWidth: 1,
+    borderRadius: 12,
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold',
+    overflow: 'hidden',
+    padding: 12,
+    textAlign: 'center',
+  },
+  but2: {
+    backgroundColor: 'blue',
+    borderColor: 'white',
+    borderWidth: 1,
+    borderRadius: 12,
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold',
+    overflow: 'hidden',
+    padding: 12,
+    textAlign: 'center',
   }
 });

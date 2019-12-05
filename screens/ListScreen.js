@@ -77,6 +77,7 @@ export default class ListScreen extends Component {
 
   render() {
     const { search } = this.state.search;
+    const { navigate } = this.props.navigation;
     var items = [];
     console.log("Search: " + this.state.search);
     this.state.Users.forEach(element => {

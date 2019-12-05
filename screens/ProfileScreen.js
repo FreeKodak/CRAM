@@ -82,7 +82,7 @@ class ProfileScreen extends React.Component {
       <View style={styles.container}>
         <Header fname={this.state.firstName} lname={this.state.lastName} />
         <StatsBar />
-        <ProfileContent nav={this.props.navigation} />
+        <ProfileContent />
       </View>
     );
   }
