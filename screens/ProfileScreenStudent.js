@@ -7,16 +7,15 @@ import * as firebase from "firebase";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { db } from "../config";
 
-let userData = db.ref("/users/tutors");
+let userData = db.ref("/users/students");
 
-class ProfileScreen extends React.Component {
+class ProfileScreenStudent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       currentUser: "",
       firstName: "",
       lastName: "",
-      Bio: "",
       Type: ""
     };
     this.getuser = this.getuser.bind(this);
@@ -49,7 +48,7 @@ class ProfileScreen extends React.Component {
     });
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.getuser();
 
     userData.on("value", snapshot => {
@@ -63,15 +62,12 @@ class ProfileScreen extends React.Component {
         if (inside[index]["ID"] == userID) {
           tempFName = inside[index]["fname"];
           tempLName = inside[index]["lname"];
-          tempBio = inside[index]["Bio"];
-          console.log(inside[index]["ID"]);
         } else {
           console.log("NOT IT");
         }
       });
       this.setState({ lastName: tempLName });
       this.setState({ firstName: tempFName });
-      this.setState({ Bio: tempBio });
 
       console.log(this.state);
     });
@@ -82,13 +78,13 @@ class ProfileScreen extends React.Component {
       <View style={styles.container}>
         <Header fname={this.state.firstName} lname={this.state.lastName} />
         <StatsBar />
-        <ProfileContent />
+        {/* <ProfileContent /> */}
       </View>
     );
   }
 }
 
-export default ProfileScreen;
+export default ProfileScreenStudent;
 
 const styles = StyleSheet.create({
   container: {

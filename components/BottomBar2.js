@@ -13,16 +13,14 @@ export default class BottomBar extends React.Component {
     this.setState({ selectedIndex });
     const { navigate } = this.props.nav;
     if (selectedIndex == 0) {
-      navigate("Pay");
+      //   navigate("Tutor");
     } else if (selectedIndex == 1) {
-      navigate("CreateTutor");
-    } else if (selectedIndex == 2) {
-      navigate("ProfileStudent");
+      navigate("Profile");
     }
   }
 
   render() {
-    const buttons = ["Settings", "Earn", "Profile"];
+    const buttons = ["Settings", "Profile"];
     const { selectedIndex } = this.state;
 
     return (

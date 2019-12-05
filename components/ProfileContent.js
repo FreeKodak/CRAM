@@ -75,6 +75,7 @@ class ProfileContent extends React.Component {
                 <Text style={{ color: 'white' }}>Book a Session</Text>
               </TouchableOpacity>
             </View>
+            <Text style={styles.text}>Bio goes here</Text>
           </View>
         </View>
       </ScrollView>
@@ -103,6 +104,8 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     padding: 12,
     textAlign: 'center',
-    // paddingBottom: 20,
+    textWrap: {
+      alignItems: "center"
+    }
   }
 });

@@ -2,23 +2,17 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
-class LoginScreen extends React.Component {
+class SettingsScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <View style={styles.yellowbox}>
           <TouchableOpacity
-            onPress={() => navigate("StudentLogin")}
+            onPress={() => navigate("Pay")}
             style={styles.studentButton}
           >
-            <Text>Login as a student.</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.tutorButton}
-            onPress={() => navigate("TutorLogin")}
-          >
-            <Text>Login as a tutor.</Text>
+            <Text>Add Payment.</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -26,7 +20,7 @@ class LoginScreen extends React.Component {
   }
 }
 
-export default LoginScreen;
+export default SettingsScreen;
 
 const styles = StyleSheet.create({
   container: {
