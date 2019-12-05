@@ -21,6 +21,7 @@ import ProfileScreenStudent from "./screens/ProfileScreenStudent";
 import SettingsScreen from "./screens/SettingsScreen";
 import LoginStudent from "./screens/LoginStudent";
 import LoginTutor from "./screens/LoginTutor";
+import StaticCdr from './screens/StaticCdr';
 import { db } from "./config";
 
 // firebase.initializeApp({
@@ -48,7 +49,8 @@ const MainNavigatior = createStackNavigator({
   ProfileStudent: { screen: ProfileScreenStudent },
   Settings: { screen: SettingsScreen },
   StudentLogin: { screen: LoginStudent },
-  TutorLogin: { screen: LoginTutor }
+  TutorLogin: { screen: LoginTutor },
+  SCdr: { screen: StaticCdr },
 });
 
 const App = createAppContainer(MainNavigatior);

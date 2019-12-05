@@ -36,15 +36,16 @@ export default class TutorScreen extends React.Component {
   };
 
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <>
         <View style={PresentationalComponent.TutorScreen_container}>
           <TouchableOpacity style={PresentationalComponent.TutorScreen_tutbut}>
-            <Text style={PresentationalComponent.TutorScreen_butText}>
+            <Text style={PresentationalComponent.TutorScreen_butText} onPress={() => navigate("SCdr")}>
               Manage Appointments
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={PresentationalComponent.TutorScreen_tutbut}>
+          <TouchableOpacity style={PresentationalComponent.TutorScreen_tutbut} onPress={() => navigate("Cdr")}>
             <Text style={PresentationalComponent.TutorScreen_butText}>
               Set Availability
             </Text>
@@ -66,8 +67,8 @@ export default class TutorScreen extends React.Component {
                 <Text>Doing this will display your location to app users!</Text>
               </Overlay>
             ) : (
-              <View></View>
-            )}
+                <View></View>
+              )}
           </View>
         </View>
         <BottomBar2 nav={this.props.navigation} />

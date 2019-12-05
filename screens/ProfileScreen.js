@@ -33,7 +33,7 @@ class ProfileScreen extends React.Component {
     firebase
       .database()
       .ref("users/")
-      .once("value", function(snapshot) {
+      .once("value", function (snapshot) {
         console.log(snapshot.val());
       });
   }
@@ -59,7 +59,7 @@ class ProfileScreen extends React.Component {
       var tempFName = "";
       var tempLName = "";
       var tempBio = "";
-      inside.forEach(function(item, index) {
+      inside.forEach(function (item, index) {
         if (inside[index]["ID"] == userID) {
           tempFName = inside[index]["fname"];
           tempLName = inside[index]["lname"];
@@ -82,7 +82,7 @@ class ProfileScreen extends React.Component {
       <View style={styles.container}>
         <Header fname={this.state.firstName} lname={this.state.lastName} />
         <StatsBar />
-        <ProfileContent />
+        <ProfileContent nav={this.props.navigation} />
       </View>
     );
   }

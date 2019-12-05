@@ -56,7 +56,7 @@ export default class CdrTest extends React.Component {
         apts.push({ key: monthToInt(this.state.lastChosenDay.dateString), appt: '@ ' + this.state.time1 + ' - ' + this.state.time2 })
         this.setState({ bookings: apts })
         this.setState({ refresh: !this.state.refresh })
-        alert("Added booking!")
+        alert("Added!")
         console.log(this.state.bookings)
     }
 
@@ -99,7 +99,7 @@ export default class CdrTest extends React.Component {
                     // If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday.
                     firstDay={1}
                     // Hide day names. Default = false
-                    hideDayNames={true}
+                    hideDayNames={false}
                     // Show week numbers to the left. Default = false
                     showWeekNumbers={true}
                     // Handler which gets executed when press arrow icon left. It receive a callback can go back month

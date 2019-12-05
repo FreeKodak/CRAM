@@ -8,6 +8,8 @@ import {
   Button
 } from "react-native";
 import firebase from "firebase";
+import { TouchableHighlight, TouchableOpacity } from "react-native-gesture-handler";
+import { NavigationEvents } from "react-navigation";
 
 class ProfileContent extends React.Component {
   constructor(props) {
@@ -21,7 +23,7 @@ class ProfileContent extends React.Component {
     firebase
       .database()
       .ref("users/")
-      .once("value", function(snapshot) {
+      .once("value", function (snapshot) {
         console.log(snapshot.val());
       });
   }
@@ -39,12 +41,26 @@ class ProfileContent extends React.Component {
   }
 
   render() {
+    const { navigate } = this.props.nav;
     return (
       <ScrollView>
         <View>
           <View style={styles.textWrap}>
             <Text style={styles.text}>Bio goes here</Text>
           </View>
+          <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-betweem' }}>
+            <View style={{ paddingLeft: '10%', paddingRight: '5%', paddingTop: 16 }}>
+              <TouchableOpacity style={styles.but1} onPress={() => navigate("Chat")}>
+                <Text style={{ color: 'white' }}>Available Now</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{ paddingLeft: '5%', paddingRight: '10%', paddingTop: 16 }}>
+              <TouchableOpacity style={styles.but2} onPress={() => navigate("Cdr")}>
+                <Text style={{ color: 'white' }}>Book a Session</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
         </View>
       </ScrollView>
     );
@@ -64,5 +80,29 @@ const styles = StyleSheet.create({
 
   textWrap: {
     alignItems: "center"
+  },
+  but1: {
+    backgroundColor: 'blue',
+    borderColor: 'white',
+    borderWidth: 1,
+    borderRadius: 12,
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold',
+    overflow: 'hidden',
+    padding: 12,
+    textAlign: 'center',
+  },
+  but2: {
+    backgroundColor: 'blue',
+    borderColor: 'white',
+    borderWidth: 1,
+    borderRadius: 12,
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold',
+    overflow: 'hidden',
+    padding: 12,
+    textAlign: 'center',
   }
 });
